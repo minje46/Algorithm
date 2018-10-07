@@ -100,3 +100,63 @@
   $$
 
 - Small need for storage space.
+
+
+
+
+
+------
+
+## 5. Counting Sort 
+
+- The **main point** of counting sort is **counting and building an accumulative count.**
+
+  > Counting : Count how many times the value is used.
+  >
+  > Accumulative count : Building the accumulative count based on count array. Accumulative means the index of new array.
+
+  <img width="432" alt="counting" src="https://user-images.githubusercontent.com/23169707/46582651-4280d280-ca85-11e8-8a81-19ebd3119bc9.png">
+
+- Performance :
+  $$
+  O(n)
+  $$
+
+- Unstable sort.
+
+- The efficiency depends on the input size. Because it should check how many times the value is used.
+
+
+
+
+
+------
+
+## 6. Radix Sort 
+
+- The **main point** of radix sort is **comparing the digit of value.**
+
+  > Check the max value : Check what **the max value** is in input array because **the itterative** time **depends on the digit of max value.**
+  >
+  > Compare the digit of value : Compare and sort the value.
+  >
+  > Change the digit : Change the digit step by step.  `exp = 1; ` `(value / exp)% 10;` `exp *= 10;`
+  >
+  > Update : The input **value is reset depends on digit** in every pass.
+
+  <img width="298" alt="radix" src="https://user-images.githubusercontent.com/23169707/46582761-47df1c80-ca87-11e8-98a1-aaf0ab9e5174.png">
+
+- Performance : 
+  $$
+  O(kn)
+  $$
+
+
+  > k : number of digits per key.
+  >
+  > n : number of keys to sort.
+
+- The queue is essential to store the result of digit's comparison.
+
+- The performnace depends on the size of the keys and choice of the radix(digit, alphabet).
+
