@@ -6,7 +6,7 @@ using namespace std;
 */
 
 // 11 - 2
-
+/*
 #include<iostream>
 #include<algorithm>
 #include<vector>
@@ -52,56 +52,73 @@ int main(void)
 	for (int i = 0; i < res.size(); i++)
 		cout << res[i] << "\n";
 }
-
+*/
 
 // 11 - 3
 /*
 #include<iostream>
 #include<vector>
 #include<string>
+#include<string.h>
 
 using namespace std;
 
-void Check(vector<string> v)
+vector<string> result;
+
+void Check(char str[51])
 {
 	int left = 0, right = 0;
 
-	for(int i=0; i<v.size(); i++)
+	for (int i = 0; i < strlen(str); i++)
 	{
-		for (int j = 0; j < v[i].size(); j++)
-		{
-			if (v[i].at(j) == '(')
-				left++;
-			else if (v[i].at(j) == ')')
+		if (str[i] == '(')
+			left++;
+		else if (str[i] == ')' && left > right)
 				right++;
-		}
-		
-		if (left == right)
-			cout << "YES" << "\n";
-		else
-			cout << "NO" << "\n";
-		
-		// Re initialize values.
-		left = 0;
-		right = 0;
 	}
+
+	if (left == right && left+right == strlen(str))
+		result.push_back("YES");
+	else
+		result.push_back("NO");
 }
 
 int main(void)
 {
-	std::ios_base::sync_with_stdio(false);
-
 	int N;
 	cin >> N;
-	while (getchar() != '\n');
+	getchar();
 
 	char str[51];
-	vector<string> v;
 	for (int i = 0; i < N; i++)
 	{
 		cin.getline(str, 51);
-		v.push_back(str);
+		Check(str);
 	}
-	Check(v);
+
+	for (int i = 0; i < result.size(); i++)
+		cout << result[i] << "\n";
 }
 */
+
+// 11 - 4
+
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int Check(char str[])
+{
+
+	
+	return 0;
+}
+
+int main(void)
+{
+	char str[31];
+	cin.getline(str, 31);
+
+	cout << Check(str) << "\n";
+}
