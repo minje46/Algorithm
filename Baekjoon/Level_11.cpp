@@ -1,7 +1,7 @@
 // 11 - 1 (Basic stack)
 /*
 #include<iostream>
-
+#include<stack>
 using namespace std;
 */
 
@@ -104,21 +104,77 @@ int main(void)
 // 11 - 4
 
 #include<iostream>
-#include<vector>
+#include<stack>
+#include<string>
 
 using namespace std;
 
-int Check(char str[])
-{
+int result = 0;
 
-	
-	return 0;
+void Check(string str)
+{
+	stack<char> st;
+	int multi = 1, x = 0, y = 0;
+
+	for (int i = 0; i < str.length(); i++)
+	{
+		switch(str[i])
+		{
+		case '(':
+			++x;
+			st.push(str[i]);
+			multi *= 2;
+			if (i + 1 < str.length() && str[i + 1] == ')')		// If next character is ')', convert character to integer value.
+				result += multi;									// else, characters are pushed in stack in a row.
+			break;	
+
+		case '[':
+			++y;
+			st.push(str[i]);
+			multi *= 3;
+			if (i + 1 < str.length() && str[i + 1] == ']')		// If next character is ']', convert character to integer value.
+				result += multi;									// else, characters are pushed in stack in a row.
+			break;
+
+		case ')':
+			if (st.empty() || x <= 0)			// The condition of stack is empty is ')' is loaded first than other open character.
+			{										// Another condition of x is less than 0 means close character is more than open character.
+				result = 0;						// All these conditions should be error.
+				return;
+			}
+			else
+			{
+				--x;
+				st.pop();
+				multi /= 2;
+				break;
+			}
+			
+		case ']':
+			if (st.empty() || y <= 0)
+			{
+				result = 0;
+				return;
+			}
+			else
+			{
+				--y;
+				st.pop();
+				multi /= 3;
+				break;
+			}
+		}
+	}
+	if (st.size() != 0 || x != 0 || y != 0)
+		result = 0;
 }
 
 int main(void)
 {
-	char str[31];
-	cin.getline(str, 31);
+	string input;
+	cin >> input;
 
-	cout << Check(str) << "\n";
+	Check(input);
+
+	cout << result << "\n";
 }
