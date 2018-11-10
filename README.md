@@ -1,2 +1,2 @@
 # Algorithm
-Do implement algorithm what i learned or trying to solve.
+Study algorithm concept and implement basic logic of lagorithm what i learned today.
