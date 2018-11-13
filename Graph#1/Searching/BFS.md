@@ -46,7 +46,7 @@
 
   > 1. **BFS is not recursive.**
   > 2. BFS는 **node의 방문 여부를 반드시 check**해야 한다. (무한 loop의 위험.)
-  > 3. BFS는 방문한 node들을 차례로 저장한 후 꺼낼 수 있는 자료구조 **Queue를 기반**으로 한다. **(FIFO원칙)**
+  > 3. BFS는 방문한 node들을 차례로 저장한 후 꺼낼 수 있는 자료구조 **Queue를 기반**으로 한다. **(FIFO원칙.)**
   > 4. BFS는 start node에서 시작해서 거리에 따라 **단계별로 searching** 하는 것이기 때문에 **not intuitive(직관적)**이지 않다. (`Prim algorithm` 과 `Dijkstra algorithm` 유사.)
   >
   > `Ex) 두 node 사이의 최단 경로 or 임의의 경로를 찾을 때 사용한다.`

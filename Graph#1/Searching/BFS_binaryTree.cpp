@@ -114,4 +114,5 @@ int main(void)
 
 	Print();						// Print all node's value.
 	cout << "\n" <<"BFS search is finished.";
+	free(root);
 }
