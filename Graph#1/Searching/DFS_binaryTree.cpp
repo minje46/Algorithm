@@ -134,5 +134,4 @@ int main(void)					// DFS search is executed after structured binary tree by bfs
 	DFS(root);				// Do dfs search.
 	Print();						// Print the result of dfs search.
 	cout << "\n" << "DFS search is finished.";
-	free(root);
 }

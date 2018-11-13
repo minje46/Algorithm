@@ -25,9 +25,10 @@
   >   <img width="373" alt="dfs" src="https://user-images.githubusercontent.com/23169707/48315541-01975300-e61b-11e8-8d46-3cc1a6b37a01.png">
   >
   >   1. Node v를 방문한다.
-  >   2. Node v에 인접한 node들 중 방문하지 않은 node가 있다면, v를 stack에 push.
-  >   3. 인접한 node를 기준으로 recursive하게 1~2를 반복.
-  >   4. 방문하지 않은 node가 없다면, Stack의 top을 pop.
+  >   2. Node v의 방문 여부를 확인한다. (true → skip / false → Node v를 방문)
+  >   3. Node v에 인접한 node들 중 방문하지 않은 node가 있다면, v를 stack에 push.
+  >   4. 인접한 node를 기준으로 recursive하게 1~3를 반복.
+  >   5. 방문하지 않은 node가 없다면, Stack의 top을 pop.
 
 - **Time complexity.**
 
