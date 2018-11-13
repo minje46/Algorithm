@@ -74,10 +74,10 @@ struct Node *BFS()
 
 void Insert(int value)
 {
-	struct Node *new_node = (struct Node*)malloc(sizeof(struct Node*));			// Allocate new memory dynamically.
+	struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));			// Allocate new memory dynamically.
 	new_node->key = value;
 
-	struct Node *location = (struct Node*)malloc(sizeof(struct Node*));				// location = store the parent node of Null pointer.
+	struct Node *location = (struct Node*)malloc(sizeof(struct Node));				// location = store the parent node of Null pointer.
 	
 	if (!root)						// The first time to insert. (For setting root node)	
 	{
