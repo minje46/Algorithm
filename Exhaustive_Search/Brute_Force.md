@@ -8,11 +8,10 @@
 
   > * Various exhaustive search
   >   1. ***Brute force***
-  >   2. Bit mask
+  >   2. Divide & conquer
   >   3. Permutation (time complexity : O(N!))
-  >   4. Backtracking
-  >   5. BFS / DFS
-
+  >   4. Optimization Problems [TSP]
+  >   5. BFS / DFS[Backtracking]Bit mask
 
 ------
 
