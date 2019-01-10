@@ -77,7 +77,7 @@
   >         table[0][i] = 0;
   >     
   >  
-  >     //Calculation Table Index and LCS Length
+  >     //Memoization Table Index and LCS Length
   >     for (int i = 1; i < len2; i++) 
   >     {
   >         max = 0;
@@ -86,21 +86,21 @@
   >         {
   >             if (str2[i]== str1[j])
   >             {
-  >                 max = table[i-1][j - 1] + 1;
+  >                 max = table[i-1][j-1] + 1;
   >                 table[i][j] = max;
   >             }
   >             else 
   >             {
-  >                 if(table[i][j - 1] > table[i - 1][j])
+  >                 if(table[i][j-1] > table[i-1][j])
   >                     table[i][j] = table[i][j-1];
   >                 else
-  >                     table[i ][j] = table[i-1][j];
+  >                     table[i][j] = table[i-1][j];
   >             }
   >         }
   >         if (LCS_length < max)
   >             LCS_length = max;
   >     }
-  >     cout << LCS_length;
+  >     cout << LCS_length;			// The longest length.
   >  
   >     int temp0, temp1, for_j;
   >     temp1 = LCS_length;
@@ -112,7 +112,7 @@
   >     for (int i = len2-1; i >0; i--)
   >     {
   >         for (int j = for_j; j > 0; j--) 
-  >         {
+  >         {	//[i][j] is destination coordinate.
   >             if (table[i][j] == temp1 && table[i][j - 1] == temp0 && table[i - 1][j - 1] == temp0 && table[i - 1][j] == temp0)
   >             {
   >                 temp0--;
@@ -124,6 +124,6 @@
   >         }
   >     }
   >  
-  >     cout << LCS << endl;
+  >     cout << LCS << endl;		// The subsequence of LCS.
   > }
   > ```
