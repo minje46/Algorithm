@@ -21,15 +21,18 @@
 >
 >   3. Search the interval.
 >
->      * Divide and search.
->
->        > [start, end] 범위가 [left, right]범위와 부분적으로 겹치는 경우.
->
 >      * return value.
 >
->        > 1. [left, right] 범위가 [start, end]와 전혀 겹치지 않는 경우
->        > 2. [left, right] 범위가 [start, end]에 완전히 포함되어 있는 경우
->        > 3. [start, end] 범위가 [left, right]에 완전히 포함되어 있는 경우
+>      > 1. 찾아내야 할 구간과 노드가 가진 정보 구간이 겹치지 않는 경우. [return -1]
+>      > 2. 찾아내야 할 구간안에 노드가 가진 정보 구간이 포함되는 경우.  [return node]
+>
+>      * Divide and search.
+>
+>      > 3. 찾아내야 할 구간과 노드가 가진 정보 구간이 부분적으로 겹치는 경우.
+>      >
+>      > 4. 찾아내야 할 구간이 노드가 가진 정보 구간 안에 포함되는 경우.
+>
+>      ![image](https://user-images.githubusercontent.com/23169707/51386854-c57be500-1ad8-11e9-8ffe-1f90537c9514.png)
 >
 > - Psuedo-code
 >
