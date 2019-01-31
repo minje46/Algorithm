@@ -106,13 +106,13 @@
   >    ![image](https://user-images.githubusercontent.com/23169707/51786297-16ae5900-2117-11e9-895b-fb6adb5528b8.png)
   >
   >    > * Prioirty queue.
-  >    >
-  >    >   → [A - C - B - E - D - E - E]
-  >    >   → 이전까지 계산해둔 값이, 그 단계에서 shortest value라는 것이 보장된다.
+  >    > → [A - C - B - E - D - E - E]
+  >    > → 이전까지 계산해둔 값이, 그 단계에서 shortest value라는 것이 보장된다.
   >    >
   >    > * Normal queue.
-  >    >   → [A - B - C - E - D - E - E]
-  >    >   → Random하게 선택된 edge에서 E까지 계산이 이루어지고, 최소 값의 E까지 path가 재계산과 업데이트가 필요하게 된다.
+  >    >
+  >    > → [A - B - C - E - D - E - E]
+  >    > → Random하게 선택된 edge에서 E까지 계산이 이루어지고, 최소 값의 E까지 path가 재계산과 업데이트가 필요하게 된다.
 
 
 
