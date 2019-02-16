@@ -51,6 +51,16 @@
   >
   >
 
+- **Features.**
+
+  > → Sparse graph에서 Kruskal algorithm이 적합하다.
+  >
+  > > - Sparse graph : Graph 내에 적은 숫자의 간선만을 가지는 형태.
+  >
+  > → Dense graph에서 Prim algorithm이 적합하다.
+  >
+  > > - Dense graph : Graph 내에 많은 수의 간선을 가지는 형태.
+
 - **Time complexity.**
 
   > → Normal queue를 이용.
