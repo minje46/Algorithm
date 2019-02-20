@@ -2,9 +2,8 @@
 
 - **Disjoint set is a data structure that stores each element which is separated.** 
 
-  <br>
+  <br>(서로소 집합은 서로 중복되지 않는 부분 집합들로 나뉘어진 원소들에 대한 정보를 저장하는 자료구조.)
 
-  (서로소 집합은 서로 중복되지 않는 부분 집합들로 나뉘어진 원소들에 대한 정보를 저장하는 자료구조.)
 
 
 
@@ -50,11 +49,12 @@
   >
   >      >  → Array의 모든 원소를 순회하면서, y의 set 번호를 x의 set 번호로 변경한다.
   >      >
-  >      > > * **Time complexity.**
-  >      > >   $$
-  >      > >   O(N)
-  >      > >   $$
-  >      > >
+  >      >  > * **Time complexity.**
+  >      >  >   $$
+  >      >  >   O(N)
+  >      >  >   $$
+  >      >  >
+  >      >  >
   >
   >   3. Find : `find(x)`
   >
