@@ -3,6 +3,7 @@
 - **Disjoint set is a data structure that stores each element which is separated.** 
 
   <br>(서로소 집합은 서로 중복되지 않는 부분 집합들로 나뉘어진 원소들에 대한 정보를 저장하는 자료구조.)
+  <br>(Refer : https://twpower.github.io/115-union-find-disjoint-set)
 
 
 
@@ -53,6 +54,7 @@
   >      >  >   $$
   >      >  >   O(N)
   >      >  >   $$
+  >      >  >
   >      >  >
   >      >  >
   >      >  >
