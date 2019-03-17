@@ -22,7 +22,7 @@
 
   ><img width="260" alt="lis" src="https://user-images.githubusercontent.com/23169707/51529665-02541e80-1dee-11e9-85fe-baae0f5508fb.png">
 
-- Ex) LCS Source code.
+- Ex) LIS Source code.
 
   > - Code
   >
