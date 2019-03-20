@@ -14,78 +14,53 @@
 
 ## 2. Jarvis March
 
-- **The graham scan algorithm makes convex hull which includes all of points itself.**
+- **The jarvis march algorithm makes convex hull which includes all of points itself.**
 
   <br>
 
-  (Graham scan이란 유한개의 점 중 다른 점을 가둘수 있는 외곽점을 찾는 알고리즘 중 하나이다.)
+  (Jarvis march란 유한개의 점 중 다른 점을 가둘수 있는 외곽점을 찾는 알고리즘 중 하나이다.)
 
 - > - Algorithm
   >
-  >   1. y 좌표가 가장 작은 점을 찾아서 pivot(P0)으로 설정한다.
+  >   1. Pivot을 설정한다. 
   >
-  >      > → y좌표가 같은 점이 존재할 경우, x좌표를 함께 비교해서 가장 작은 점을 선택한다.
+  >      > → 오른쪽 제일 아래의 점.
   >
-  >   2. pivot을 제외한 모든 점에 대하여 x축을 기준으로 오름차순`angle sort`를 한다. 
+  >   2. Cross product(외적)을 이용하여 가장 각도가 작은 점을 구한다.
   >
-  >      > → P[] 배열에 sorted points가 저장된다.
+  >      > → 모든 점을 다 찾아본다는 것이 point. 
+  >      >
+  >      > * March up : [y값이 양수이거나 0인 값만 고려한다.]
+  >      > * March down : [y값이 음수이거나 0인 값만 고려한다.]
   >
-  >   3. Stack에 pivot(P0)와 P[1]을 push.
-  >
-  >      > → Stack의 원소들은 CCW(Counter Clock Wise)으로 Convex한 성질을 유지한다.
-  >
-  >   4. Stack에 P[i]를 push. `[i~N까지]`
-  >
-  >      > a) Convex hull의 마지막 직선에서 P[i] 점이 왼쪽에 있으면 pop.
-  >      > b) Convex hull의 마지막 직선에서 P[i] 점이 오른쪽에 있으면 push.
+  >   3. 2번 과정을 반복한다.
   >
   > - Psuedo-code
   >
   >   ```c++
-  >   int N;	// Number of points.
-  >   int points[N];	// The array of points.
-  >   
-  >   void Graham_Scan()
+  >   int jarvis(P)
   >   {
-  >       stack<int> stk;
-  >   	Angle_sort(points[N]);	// Sort points by CCW.
-  >       int pivot = Find_pivot(points[N]);	// Find the lowest y_coordinate.
-  >       swap(points[0], points[pivot]);	// Make pivot points as p0.
-  >           
-  >       stk.push(p[0]);	stk.push(p[1]);	// First convex hull.
-  >       for(int i=2; i<=N; i++)
-  >       {
-  >          while(stk.size() >= 2)
-  >          {
-  >              auto first = stk.top();	
-  >              stk.pop();
-  >              auto second = stk.top();
-  >              if(!CCW(second, first, p[i]))	// point is located on right way
-  >              {
-  >                  stk.push(first);
-  >                  break;
-  >              }
-  >          }
-  >          stk.push(p[i]);
-  >       }
+  >     i = 0
+  >     p[0] = leftmost point of P
+  >     do
+  >       p[i+1] = point such that all other points in P are to the 
+  >                                    right of the line p[i]p[i+1]
+  >       i = i + 1
+  >     while p[i] != p[0]
+  >     
+  >         return p
   >   }
   >   ```
 
 - **Time complexity.**
 
   > $$
-  > O(NlogN)
+  > O(Nh)
   > $$
   >
-  > → Pivot을 search : O(N)
+  > → The number of points : O(h)
   >
-  > → Angle sort : O(NlogN)
-  >
-  > → Stack : O(N)
-
-- **Features.**
-
-  > 1. s
+  > → Find the next points : O(N)
 
 
 
