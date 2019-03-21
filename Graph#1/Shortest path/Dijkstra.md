@@ -21,23 +21,34 @@
 
 ## 1. Dijkstra algorithm
 
-- **Dijkstra algorithm is based on BFS search that it figures out the shortest path between edges with minimum cost.**
+- **Dijkstra algorithm figures out the shortest path from the one single vertex to all of other vertexes on graph.**
+
+  > * Graph 내부에 Negative cycle이 없어야 한다. 
+  >   → Shortest path를 구할 수 없다.
+  > * Negative value를 가지는 edge가 없어야 한다. 
+  >   → Time complex가 보장되지 않는다.
 
   <br>
 
-  (다익스트라 알고리즘은 너비우선 탐색을 기본으로 하는 정점과 정점을 연결하는 경로 중 간선들의 가중치 합이 최소가 되는 최단 경로를 구하는 것이다. )
+  (다익스트라 알고리즘은 그래프의 한 정점에서 다른 모든 정점으로의 최단경로를 구하는 것.)
 
   > - Algorithm
   >
-  >   1. Check되어 있지 않은 Edge 중에서 Distance가 가장 짧은 edge를 선택한다.
+  >   1. 현재 vertex에서 direct connect되고 아직 방문하지 않았던 모든 vertex들을 check.
   >
-  >   2. 선택된 Edge에서 연결된 edge와의 vertex를 통해 cost를 계산한다.
-  >
-  >      > Vertex(x,y,z)라고 할 경우,
+  >      > → 처음에는 현재 vertex 가 Start vertex.
   >      >
-  >      > dis[y] > dis[x] + z 일 경우, update.
+  >      > → Visit[i] = false && edge(간선)을 가지고 있는 것을 check 한다는 것.
   >
-  >   3. All edge를 check할 때 까지, 반복.
+  >   2. Destination vertex의 기존 cost와 현재 vertex + edge cost를 compare.
+  >
+  >      > → if(dist[destination] > dist[departure] + departure.cost)
+  >
+  >   3. 1~2번 과정 이후, 아직 방문하지 않은 vertex들 중 departure vertex와 shortest path를 가진 vertex를 우선적으로 선택.
+  >
+  >      > → 이 때, 현재 선택된 vertex 까지는 shortest path라는 것이 보장된다.
+  >
+  >   4. Visit vertex가 존재 : 1번 과정부터 반복. / 없을 경우 : 종료.
   >
   > <img width="653" alt="basic_ex" src="https://user-images.githubusercontent.com/23169707/51785986-0b592e80-2113-11e9-86e3-926401af786a.png">
   > 111-11e9-90d7-b2f4387ef501.png">
@@ -95,7 +106,7 @@
   >
   >    > → 이전 노드까지 계산해둔 shortest path value가 shortest라고 보장할 수 없게 된다.
   >
-  >    > → Dijkstra algorithm은 edge를 지날 수록 cost가 증가한다는 전제를 가지고 있다.
+  >    > → Dijkstra algorithm은 vertex를 지날 수록 cost가 증가한다는 전제를 가지고 있다.
   >
   > 2.  **Using priority queue.**
   >
@@ -105,14 +116,14 @@
   >
   >    ![image](https://user-images.githubusercontent.com/23169707/51786297-16ae5900-2117-11e9-895b-fb6adb5528b8.png)
   >
-  >    > * Prioirty queue.
-  >    > → [A - C - B - E - D - E - E]
-  >    > → 이전까지 계산해둔 값이, 그 단계에서 shortest value라는 것이 보장된다.
-  >    >
-  >    > * Normal queue.
-  >    >
-  >    > → [A - B - C - E - D - E - E]
-  >    > → Random하게 선택된 edge에서 E까지 계산이 이루어지고, 최소 값의 E까지 path가 재계산과 업데이트가 필요하게 된다.
-
-
+  > * Prioirty queue.
+  >
+  > * > → [A - C - B - E - D - E - E]
+  >   >
+  >   > 이전까지 계산해둔 값이, 그 단계에서 shortest value라는 것이 보장된다.
+  >
+  > * Normal queue.
+  >
+  >   > → [A - B - C - E - D - E - E]
+  >   > Random하게 선택된 edge에서 E까지 계산이 이루어지고, 최소 값의 E까지 path가 재계산과 업데이트가 필요하게 된다.
 
