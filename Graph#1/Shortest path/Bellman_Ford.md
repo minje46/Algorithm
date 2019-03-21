@@ -21,11 +21,16 @@
 
 ## 2. Bellman-Ford algorithm
 
-- **Bellman ford algorithm is figuring out the shortest path on graph which has even negative value.**
+- **Bellman ford algorithm figures out the shortest path from the one single vertex to all of other vertexes on graph even edge has negative value.**
+
+  > * Graph 내부에 Negative cycle이 없어야 한다. 
+  >   → Shortest path를 구할 수 없다.
+  > * Negative value를 가지는 edge가 있어도 된다.
+  >   → Undirected(무방향) graph가 전제조건.
 
   <br>
 
-  (벨만포드 알고리즘은 음수 가중치가 있는 그래프에서도 정점과 정점을 연결하는 경로 중 간선들의 가중치 합이 최소가 되는 최단 경로를 구할 수 있다. )
+  (벨만포드 알고리즘은 음수 가중치가 있는 그래프에서도 한 정점에서 다른 모든 정점으로의 최단 경로를 구할 수 있다. )
 
   > - Algorithm
   >
@@ -73,6 +78,7 @@
   > $$
   > O(|V||E|)
   > $$
+  >
 
 - **feature.**
 
