@@ -54,21 +54,21 @@
   >       {
   >           auto dpt = que.front();
   >           que.pop();
-  >           visit[dpt] = false;
+  >           in_que[dpt] = false;
   >           
   >           for(int i=0; i<graph[dpt].size(); i++)
   >           {
   >               auto dst = graph[dpt][i].first;
   >               if(dist[dst] > dist[dpt] + graph[dpt][i].cost)
   >                   dist[dst] = dist[dpt] + graph[dpt][i].cost;
-  >               if(!visit[dst])
+  >               if(!in_que[dst])
   >               {
   >                   cycle[dst]++;
   >                   if(cycle[dst] >= N)
   >                       negative = true;
   >                   
   >                   que.push(dst);
-  >                   visit[dst] = true;
+  >                   in_que[dst] = true;
   >               }
   >           }
   >       }
