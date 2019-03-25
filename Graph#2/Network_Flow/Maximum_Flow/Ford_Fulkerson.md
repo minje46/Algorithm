@@ -1,50 +1,46 @@
 # Maximum Flow Algorithm 
 
-- **Graph shortest path means the route from edge to another edge with minimum cost.** 
+- **Maximum flow means finding the maximum flow from source to sink on graph.** 
 
   <br>
 
-  (그래프의 정점에서 또 다른 정점까지 도달하는데 최단 거리를 뜻한다.)
+  (그래프위에서 source → sink 로 흐를 수 있는 최대 유량을 찾는 것.)
 
-- **Diverse way of shortest path.**
 
-  1. Single source and single destination shortest path problem.
-     <br>(하나의 정점에서 다른 하나의 정점까지의 최단 경로를 구하는 문제.)
-  2. **Single source shortest path problem.**
-     <br>(하나의 정점에서 다른 모든 정점까지의 최단 경로를 구하는 문제)
-  3. Single destination shortest path problem.
-     <br>(하나의 목적지로가는 모든 최단 경로를 구하는 문제)
-  4. All pairs shortest path problem.
-     <br>(모든 최단 경로를 구하는 문제)
 
 ------
 
 ## 1. Ford Fulkerson algorithm
 
-- **Bellman ford algorithm figures out the shortest path from the one single vertex to all of other vertexes on graph even edge has negative value.**
+- **Ford fulkerson algorithm figures out the path with maximum flow from source to sink on network graph.**
 
-  > - Graph 내부에 Negative cycle이 없어야 한다. 
-  >   → Shortest path를 구할 수 없다.
-  > - Negative value를 가지는 edge가 있어도 된다.
-  >   → Undirected(무방향) graph가 전제조건.
+  > → Basic concept : augmenting(증가하는) path를 찾으면서 flow를 증가시키는 것.
 
   <br>
 
-  (벨만포드 알고리즘은 음수 가중치가 있는 그래프에서도 한 정점에서 다른 모든 정점으로의 최단 경로를 구할 수 있다. )
+  (포드 풀커슨 알고리즘은 네트워크 그래프에서 source→sink로 보낼 수 있는 최대 유량의 경로를 찾는 것이다.)
 
   > - Algorithm
   >
-  >   1. Shortes path를 찾기 위해 RELAX을 M번 반복.
+  >   1. Network flow의 모든 edge flow를 0으로 set.
   >
-  >      > M = 정점의 개수 - 1 (모든 간선 순회)
+  >   2. Augmenting path가 있을 때 까지 3-5번을 반복한다.
+  >
+  >      > → Augmenting path를 더 이상 찾지 못하면 stop.
+  >
+  >   3. augmenting path를 search.
+  >
+  >      > → Residual capacity(잔여 용량)이 남은 edge들만 고려한다.
   >      >
-  >      > → 모든 정점은 M번의 간선을 통해 도달할 수 있다는 개념을 이용.
-  >
-  >   2. Negative cycle을 판단하기 위해 반복.
-  >
-  >      > N = 정점의 개수 (모든 간선 + 1)
+  >      > → BFS / DFS 를 이용해서 source→set의 path를 search.
   >      >
-  >      > → N번째에 shortest path가 update될 경우, negative cycle이 존재하는 것.
+  >      > → Augmenting path를 통해 보낼 수있는 flow의 최대량은, path의 edge들 중 최소의 residual capacity로 결정된다.
+  >
+  >   4. edge capacity를 compute한다.
+  >
+  >   5. edge flow를 increase한다. 
+  >
+  >      > → Edge flow 를 increase(update)할 때, 한 방향의 유량이 증가하면 다른 방향의 유량은 줄어든다. [Skew Symmetric]
   >
   >      ```c++
   >      void Bellman_Ford()
@@ -72,6 +68,16 @@
   >
   >   ![image](https://user-images.githubusercontent.com/23169707/54863144-2ac5ae00-4d88-11e9-85c2-e19f39be6ace.png)
 
+- **Example.**
+
+  > * Augmenting path.
+  >
+  >   <img width="525" alt="augmenting path" src="https://user-images.githubusercontent.com/23169707/54864765-29ec4680-4d9f-11e9-9686-ff78bde14c94.png">
+  >
+  > * Backward edge.
+  >
+  >   <img width="365" alt="back edge" src="https://user-images.githubusercontent.com/23169707/54864776-425c6100-4d9f-11e9-9a66-27a163d81924.png">
+
 - **Time complexity.**
 
   > → f : 유량의 총 크기 / E : 간선의 개수
@@ -82,12 +88,9 @@
 
 - **feature.**
 
-  > 1. **Positive value and Negative value are possible.**
+  > 1. **forward edge는 not full 의 성질을 이용해서 flow를 increase.**
   >
-  >    > Negative value가 있는 graph에서 shortest path를 구할 수있다.
-  >    > → Dijkstra algorithm은 Positive value만 가능하다.
+  >    > ![image](https://user-images.githubusercontent.com/23169707/54864736-c3672880-4d9e-11e9-8acb-67f48d070cd0.png)
   >
-  > 2. **Figure out negative cycle on graph.**
-  >
-  >    > Negative cycle(음수 사이클)의 존재 여부를 파악할 수 있다.
+  > 2. **backward edge는 not empty 의 성질을 이용해서 decrease.**
 
