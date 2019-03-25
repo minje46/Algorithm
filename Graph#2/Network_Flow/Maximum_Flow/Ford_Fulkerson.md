@@ -43,24 +43,40 @@
   >      > → Edge flow 를 increase(update)할 때, 한 방향의 유량이 증가하면 다른 방향의 유량은 줄어든다. [Skew Symmetric]
   >
   >      ```c++
-  >      void Bellman_Ford()
+  >      void Ford_Fulkerson()
   >      {
-  >          // Init Single source.
-  >          for(int i=1; i<=V; i++)
-  >          {
-  >              for(int j=1; j<=V; j++)
-  >              {
-  >                  for(auto idx : graph[j])
-  >                  {	// RELAX Process.	
-  >                  	if(dist[idx.first] > idx.second + dist[j])
-  >                      {
-  >                          dist[idx.first] = idx.second + dist[j];
-  >      					if (i == N)	// Shouldn't be updated.				
-  >      						cycle = true;		
-  >                      }
-  >                  }
-  >              }
-  >          }
+  >      	while (true) // Augmenting path가 없을 때 까지.
+  >      	{
+  >      		int prev[MAX];	// For backward search.
+  >      		while (!que.empty() && prev[T] == -1)	// BFS search.
+  >      		{  
+  >      			int cur = que.front();	que.pop();
+  >      			for (int next : graph[cur])	
+  >      			{			
+  >      				if (capacity[cur][next] - flow[cur][next] > 0 && prev[next] == -1)	// flow 가능 여부, next node 방문 여부 확인.
+  >      				{			
+  >      					que.push(next);		
+  >      					prev[next] = cur;	
+  >                          
+  >      					if (next == T)			
+  >      						break;				
+  >      				}
+  >      			}
+  >      		}
+  >      		if (prev[T] == -1)		
+  >      			break;				
+  >      
+  >      		int min_f = INF;				
+  >      		for (int i = T; i != S; i = prev[i])	
+  >      			min_f = min(min_f, capacity[prev[i]][i] - flow[prev[i]][i]);
+  >      		
+  >      		for (int i = T; i != S; i = prev[i])	// Update the flow.
+  >      		{
+  >      			flow[prev[i]][i] += min_f;		
+  >      			flow[i][prev[i]] -= min_f;		
+  >      		}												
+  >      		total += min_f;
+  >      	}
   >      }
   >      ```
   >
