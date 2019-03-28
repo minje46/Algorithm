@@ -109,4 +109,8 @@
   >    > ![image](https://user-images.githubusercontent.com/23169707/54864736-c3672880-4d9e-11e9-8acb-67f48d070cd0.png)
   >
   > 2. **backward edge는 not empty 의 성질을 이용해서 decrease.**
+  >
+  > 3. **BFS를 이용하는 것이 DFS보다 효율적이라고 증명되었다.**
+  >
+  >    > → Edmond_Karp algorithm이라고 불리기도 한다.
 
