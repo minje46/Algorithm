@@ -10,29 +10,65 @@
 
 - > - Algorithm
   >
-  >   1. Network flow의 모든 edge flow를 0으로 set.
+  >   1. SPFA algorithm을 위한 초기 작업.
   >
-  >   2. Augmenting path가 있을 때 까지 3-5번을 반복한다.
+  >      > → dist[] 와 in_que[], queue<> memory를 allocation.
   >
-  >      > → Augmenting path를 더 이상 찾지 못하면 stop.
+  >   2. Check the Shortest path & Possible flow.
   >
-  >   3. augmenting path를 search.
-  >
-  >      > → Residual capacity(잔여 용량)이 남은 edge들만 고려한다.
+  >      > → 흘릴 수 있는 유량의 간선을 확인 : `capacity[cur][next] - flow[cur][next] > 0`
   >      >
-  >      > → BFS / DFS 를 이용해서 source→set의 path를 search.
+  >      > → 최단 거리를 체크 : ` d[next] > d[cur] + dist[cur][next]`
+  >
+  >   3. Find the path until get sink.
+  >
+  >      > → Sink(도착지)에 도착할 때까지 2번을 반복해서 path를 찾는다.
+  >
+  >   4. Compute cost and flow.
+  >
+  >      > → `S→T`의 경로를 flow 와 cost를 multiply한다.
   >      >
-  >      > → Augmenting path를 통해 보낼 수있는 flow의 최대량은, path의 edge들 중 최소의 residual capacity로 결정된다.
+  >      > → `tot_flow += f * dist[prev[i]][i]`
   >
-  >   4. edge capacity를 compute한다.
-  >
-  >   5. edge flow를 increase한다. 
-  >
-  >      > → Edge flow 를 increase(update)할 때, 한 방향의 유량이 증가하면 다른 방향의 유량은 줄어든다. [Skew Symmetric]
+  >   5. S에서 T로 도착하는 경로가 없을 때 까지 1~4번 반복.
   >
   >      ```c++
-  >      void Ford_Fulkerson()
+  >      void MCMF()
   >      {
+  >          	while (true) // Until there is no more augmenting path.
+  >      	{
+  >      		int prev[MAX], d[MAX];	bool in_que[MAX] = { false };			
+  >      		
+  >              queue<int>que;	d[S] = 0;	in_que[S] = true;	que.push(S);
+  >      		while (!que.empty())
+  >      		{
+  >      			int cur = que.front();	que.pop();	in_que[cur] = false;	
+  >              	for (auto next : graph[cur])
+  >                  {									
+  >      				if (capacity[cur][next] - flow[cur][next] > 0 && d[next] > d[cur] + dist[cur][next])
+  >      				{									
+  >      					d[next] = d[cur] + dist[cur][next];
+  >      					prev[next] = cur;		
+  >      					if (!in_que[next])								
+  >      						que.push(next);	in_que[next] = true;
+  >      				}
+  >      			}
+  >      		}
+  >      			
+  >      		if (prev[T] == -1)
+  >      			break;
+  >                  
+  >      		for (int i = T; i != S; i = prev[i]) // 최소 유량 f 찾기.
+  >      			f = min(f, capacity[prev[i]][i] - flow[prev[i]][i]);	
+  >      
+  >      		for (int i = T; i != S; i = prev[i]) // MCMF 구하기.	
+  >      		{											
+  >      			tot_flow += f * dist[prev[i]][i]; // cost*flow.
+  >      			flow[prev[i]][i] += f;	// update flow graph.	
+  >      			flow[i][prev[i]] -= f;	// backward graph.
+  >      		}
+  >      	}
+  >      }
   >      ```
   >
 
