@@ -5,7 +5,6 @@
   (MST는 간선에 가중치를 고려하여 최소 비용의 spanning tree를 선택하는 것을 말한다.)
 
   > - Spanning tree (신장 트리)
->
   >   → Spanning tree는 graph의 최소 연결 부분 graph이다.
   >
   >   > - 최소 연결이라는 것은, 간선의 수가 가장 적게 graph가 이루어져 있다는 것.
