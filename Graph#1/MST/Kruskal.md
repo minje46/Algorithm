@@ -97,7 +97,7 @@
 
   > - T = Kruskal로 선택된 간선들의 graph.
   >
-  > - 귀류법 : Prim algorithm 결과가 MST가 아닐 경우.
+  > - 귀류법 : Kruskal algorithm 결과가 MST가 아닐 경우.
   >
   >   > → Kruskal algorithm을 기반으로 T에 저장된 간선들은 spanning tree는 맞지만, MST은 아닐 것이다.
   >   >
