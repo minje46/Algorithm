@@ -99,7 +99,7 @@
   >
   > - 귀류법 : Kruskal algorithm 결과가 MST가 아닐 경우.
   >
-  >   > → Kruskal algorithm을 기반으로 T에 저장된 간선들은 spanning tree는 맞지만, MST은 아닐 것이다.
+  >   > → Kruskal algorithm을 기반으로 T에 저장된 간선들은 spanning tree는 맞지만, MST는 아닐 것이다.
   >   >
   >   > → Kruskal을 시작할 때의 T를 T-init. / Kruskal 끝났을 때의 T를 T-last.
   >   >
